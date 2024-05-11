@@ -1,7 +1,16 @@
 'use client'
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 export default function MainTextComponent() {
+    const router = useRouter()
+    const [sending, setSending] = useState(false);
+    
+    const handleClick = () => {
+        setSending(true)
+        router.push('/home')
+        setSending(false)
+    }
 
     return (
         <div className='w-fit flex '>
@@ -19,7 +28,13 @@ export default function MainTextComponent() {
                     <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Writing%20Hand.png" alt="Writing Hand" width="25" height="25" />
                 </div>
                 <div className='w-full flex items-center justify-center'>
-                    <button className='btn btn-primary btn-wide text-white'>Get Started!</button>
+                    <button onClick={handleClick} className='btn btn-primary btn-wide text-white'>
+                {sending?<>
+                        <span className="loading loading-spinner"></span>Loading 
+                </>:
+                        <span>Get Started!</span>
+                }
+                    </button>
                 </div>
             </div>
             <div className='w-fit hidden md:block'>
