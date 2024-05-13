@@ -32,7 +32,7 @@ export default function MainTextComponent() {
                 {sending?<>
                         <span className="loading loading-spinner"></span>Loading 
                 </>:
-                        <span>Get Started!</span>
+                        <span className='text-base-100'>Get Started!</span>
                 }
                     </button>
                 </div>
